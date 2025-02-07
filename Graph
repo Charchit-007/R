@@ -1,0 +1,7 @@
+edges = c('a','b','b','c','c','d','d','a','b','e','e','c','a','c','b','d')
+g = graph(edges,directed = FALSE)
+V(g)$color = c('blue','grey','yellow','orange','green')
+E(g)$color = c('cyan','black','purple','pink','brown','red','orange','green')
+weight = c(15,10,5,4,3,2,1,11)
+E(g)$label = weight
+plot(g) 
