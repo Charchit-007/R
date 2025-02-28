@@ -1,0 +1,39 @@
+#Binomial distribution  
+#no package required
+#dbinomial(x,size,P(success))
+dbinom(1,5,0.25)
+
+#probability that from 8 shots made 2 got succes if success is 0.6
+x= 2 
+size= 8 # n
+p= 0.6 #success
+dbinom(x, size, p) 
+
+#for cumalative like for P(x<=3) = p(0) + p(1) + p(2)
+
+pbinom(3,size = 5,prob = 0.25) 
+
+x= c(0:5)
+y = dbinom(x,size=5,prob = 0.25)
+plot(x,y,type='h',
+     xlab = 'value of x',
+     ylab = 'probability'
+     )
+
+#Poison distribution
+dpois(0,lambda = 1)  #lambda = mean value
+#if we have to find for >= value then we use lower.tail 
+lambda = 3000 * 0.000333
+ppois(0, lambda , lower.tail = FALSE)
+
+
+#Normal distribution
+dnorm(10,mean = 15 , sd = 5)
+pnorm(40 , mean = 45 , sd = 10 ) # less than 40
+
+# p(30 <= x <= 50)
+below_50 = pnorm(50,mean = 15 , sd = 5, lower.tail =TRUE )
+above_30 = pnorm(29,mean = 15 , sd = 5, lower.tail =TRUE )
+
+between = below_50 - above_30
+between
