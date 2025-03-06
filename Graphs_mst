@@ -1,0 +1,17 @@
+edges = c('a','b','b','c','c','d','d','a','a','e','e','d')
+weight = c(9,1,8,2,11,1)
+g = graph(edges ,directed = FALSE)
+E(g)$label = weight
+plot(g)
+a= mst(g,weight,algorithm = "prim")
+plot(a)
+------------------------------------------------------------------------------
+mat = matrix(c(0,150,50,300,50,150,0,130,300,50,50,130,0,500,60,
+        300,300,500,0,305,50,50,60,305,0),byrow = TRUE , ncol = 5)
+
+graph = graph_from_adjacency_matrix(mat,mode = "undirected",weighted = TRUE)
+label = c('Mum','Del','Ahmd','Jpr','Pune')
+V(g)$label = label
+plot(g)
+a= mst(g)
+plot(a)
