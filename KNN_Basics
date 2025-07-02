@@ -1,0 +1,58 @@
+#1 Mean function 
+x = c(10,20,30,40)
+val = 0;
+mean= function(x){
+  for (i in x) {
+    val = val + i;
+  }
+  return (val/length(x));
+}
+mean(x);
+
+#2 Normalization
+x = c(10,20,30,40,50,60)
+normalized= function(x){
+  return (((x-min(x))/max(x)-min(x)));
+}
+normalized(x)
+
+
+data = iris;
+summary(data);
+normalized = function(x){
+  return (((x-min(x)))/(max(x)-min(x)))
+}
+data$Sepal.Length = normalized(data$Sepal.Length);
+data$Sepal.Width = normalized(data$Sepal.Width);
+data$Petal.Length = normalized(data$Petal.Length);
+data$Petal.Width = normalized(data$Petal.Width);
+
+normalized(x);
+
+#3 
+set.seed(123)
+iris = iris[sample(nrow(iris)),]# to randomise the data
+head(iris)
+
+iris$Sepal.Length = normalized(iris$Sepal.Length);
+iris$Sepal.Width = normalized(iris$Sepal.Width);
+iris$Petal.Length = normalized(iris$Petal.Length);
+iris$Petal.Width = normalized(iris$Petal.Width);
+
+#to all columns
+
+iris_norm = as.data.frame(lapply(iris[ ,1:4] , normalized))
+iris_norm$Species = iris$Species
+
+#split into training and testin
+train_index = 1:140
+train_data = iris[train_index,1:4]
+train_labels = iris[train_index , 5]
+
+test_data = iris[-train_index, 1:4]
+test_labels = iris[-train_index,5]
+
+prediction = knn(train = train_data , test = test_data, cl = train_labels , k=3)
+
+confusionMatrix(prediction,test_labels) # To check accuracy
+
