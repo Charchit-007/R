@@ -1,0 +1,18 @@
+# Association rule mining 
+#  -Aprori Algorithm
+
+Training_data = list(c('A','B'),c('A','B','P','C'),c('A','P','C','D'),c('P','Q','R'),c('L','M','N'),c('A','B','C','D'),c('B','C','D'),c('L','M','N','A','B','C','D'))
+
+Trans = as(Training_data,'transactions')
+
+itemFrequencyPlot(Trans)
+
+inspect(Trans)
+
+rules = apriori(Trans,parameter = list(support = 0.3,confidence = 0.75))
+inspect(rules)
+
+#Top 5 rules based on confidence
+sorted = sort(rules,5)
+inspect(sorted)
+ans = head(inspect(sorted),5)
